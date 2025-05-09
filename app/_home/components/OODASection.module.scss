@@ -1,0 +1,315 @@
+.oodaSection {
+  padding: 2rem 0;
+  background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(183, 28, 28, 0.03) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+  }
+  
+  .sectionHeader {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    
+    h2 {
+      color: #1c1e22;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #b71c1c 0%, #1c1e22 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    p {
+      color: #444;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+  
+  .oodaDiagram {
+    margin: 0 auto;
+    position: relative;
+    
+    .stepsNavigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 1.5rem;
+      
+      .navButton {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: white;
+        border: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        z-index: 5;
+        
+        svg {
+          fill: #b71c1c;
+          transition: all 0.2s ease;
+        }
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+          
+          svg {
+            fill: #1c1e22;
+          }
+        }
+        
+        &:active {
+          transform: translateY(0);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          pointer-events: none;
+        }
+      }
+    }
+    
+    .stepsOuterContainer {
+      position: relative;
+      padding: 1rem 0;
+      flex: 1;
+      overflow: hidden;
+      width: calc(100% - 120px);
+      margin: 0 auto;
+    }
+    
+    .stepsContainer {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-left: calc(50% - 75px);
+      padding-right: calc(50% - 75px);
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      gap: 1rem;
+      
+      &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+    }
+    
+    .step {
+      flex: 0 0 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &.active {
+        transform: scale(1.1);
+        
+        .stepNumber {
+          background: linear-gradient(135deg, #b71c1c 0%, #911313 100%);
+          box-shadow: 0 8px 20px rgba(183, 28, 28, 0.3);
+          transform: scale(1.15);
+          color: white;
+        }
+        
+        .stepTitle {
+          color: #b71c1c;
+          font-weight: 700;
+        }
+      }
+      
+      .stepNumber {
+        width: 42px;
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border-radius: 50%;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        color: #444;
+      }
+      
+      .stepTitle {
+        text-align: center;
+        font-weight: 600;
+        color: #666;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+      }
+    }
+    
+    .stepDetails {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      min-height: 150px;
+      margin-top: 1rem;
+      
+      .detailsContent {
+        h3 {
+          font-size: 1.5rem;
+          color: #1c1e22;
+          font-weight: 700;
+          margin-bottom: 1rem;
+        }
+        
+        p {
+          color: #555;
+          line-height: 1.7;
+          font-size: 1.1rem;
+        }
+        
+        &.placeholder {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100px;
+          
+          p {
+            color: #aaa;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .oodaSection {
+    padding: 1.5rem 0;
+    
+    .sectionHeader {
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .oodaDiagram {
+      .stepsNavigation {
+        .navButton {
+          width: 32px;
+          height: 32px;
+        }
+        
+        .stepsOuterContainer {
+          width: calc(100% - 80px);
+        }
+      }
+      
+      .stepsContainer {
+        padding-left: calc(50% - 60px);
+        padding-right: calc(50% - 60px);
+        
+        .step {
+          flex: 0 0 120px;
+          .stepTitle {
+            font-size: 0.8rem;
+          }
+          
+          &.active {
+            transform: scale(1.05);
+            
+            .stepNumber {
+              transform: scale(1.1);
+            }
+          }
+          
+          .stepNumber {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+          }
+        }
+      }
+      
+      .stepDetails {
+        padding: 1.5rem;
+        min-height: 120px;
+        
+        .detailsContent {
+          h3 {
+            font-size: 1.2rem;
+          }
+          
+          p {
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .oodaSection {
+    .oodaDiagram {
+      .stepsContainer {
+        .step {
+          flex: 0 0 110px;
+          
+          &.active {
+            transform: scale(1.05);
+            
+            .stepNumber {
+              transform: scale(1.1);
+            }
+          }
+          
+          .stepNumber {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+          }
+          
+          .stepTitle {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+} 

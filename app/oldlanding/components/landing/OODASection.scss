@@ -1,0 +1,378 @@
+.ooda-section {
+  padding: 2rem 0;
+  background: linear-gradient(135deg, var(--light-gray) 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(var(--primary-rgb), 0.03) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    
+    h2 {
+      color: var(--secondary-color);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    p {
+      color: var(--dark-gray);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+  
+  .ooda-diagram {
+    margin: 0 auto;
+    position: relative;
+    
+    .steps-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 1.5rem;
+      
+      .nav-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: white;
+        border: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        z-index: 5;
+        
+        svg {
+          fill: var(--primary-color);
+          transition: all 0.2s ease;
+        }
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+          
+          svg {
+            fill: var(--secondary-color);
+          }
+        }
+        
+        &:active {
+          transform: translateY(0);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        &.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          pointer-events: none;
+        }
+      }
+    }
+    
+    .steps-outer-container {
+      position: relative;
+      padding: 1rem 0;
+      flex: 1;
+      overflow: hidden;
+      width: calc(100% - 120px);
+      margin: 0 auto;
+    }
+    
+    .steps-container {
+      display: flex;
+      position: relative;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 1rem 0;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      padding-left: calc(50% - 75px);
+      padding-right: calc(50% - 75px);
+      
+      .step {
+        flex: 0 0 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 0.75rem;
+        position: relative;
+        scroll-snap-align: center;
+        opacity: 0.7;
+        transform: scale(0.9);
+        cursor: pointer;
+        
+        &:hover {
+          opacity: 0.85;
+          transform: scale(0.95);
+        }
+        
+        &.active {
+          opacity: 1;
+          transform: scale(1.1) translateY(-5px);
+          z-index: 1;
+          
+          .step-number {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.3);
+            border: none;
+          }
+          
+          .step-title {
+            color: var(--primary-color);
+            font-weight: 700;
+          }
+        }
+        
+        .step-number {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: var(--white);
+          border: 2px solid var(--light-gray);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          margin-bottom: 0.75rem;
+          transition: all 0.3s ease;
+          font-size: 1rem;
+        }
+        
+        .step-title {
+          text-align: center;
+          font-size: 0.9rem;
+          color: var(--dark-gray);
+          transition: all 0.3s ease;
+          font-weight: 500;
+          padding: 0 0.5rem;
+        }
+      }
+    }
+    
+    .step-details {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      margin-top: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+      }
+      
+      .details-content {
+        text-align: center;
+        
+        h3 {
+          color: var(--primary-color);
+          font-size: 1.4rem;
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+          background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        
+        p {
+          color: var(--dark-gray);
+          font-size: 1rem;
+          line-height: 1.4;
+          max-width: 700px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 992px) {
+    padding: 2rem 0;
+    
+    .section-header {
+      h2 {
+        font-size: 2rem;
+      }
+      
+      p {
+        font-size: 1.1rem;
+      }
+    }
+    
+    .ooda-diagram {
+      .steps-navigation {
+        margin-bottom: 1rem;
+        
+        .nav-button {
+          width: 36px;
+          height: 36px;
+        }
+      }
+      
+      .steps-container {
+        padding-left: calc(50% - 65px);
+        padding-right: calc(50% - 65px);
+        
+        .step {
+          flex: 0 0 130px;
+          
+          &.active {
+            transform: scale(1.05) translateY(-3px);
+            
+            .step-number {
+              background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+              color: white;
+              box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.3);
+            }
+          }
+        }
+      }
+      
+      .step-details {
+        padding: 2rem;
+        
+        .details-content {
+          h3 {
+            font-size: 1.4rem;
+          }
+          
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem 0;
+    
+    .section-header {
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+    
+    .ooda-diagram {
+      .steps-navigation {
+        .nav-button {
+          width: 32px;
+          height: 32px;
+        }
+        
+        .steps-outer-container {
+          width: calc(100% - 80px);
+        }
+      }
+      
+      .steps-container {
+        padding-left: calc(50% - 60px);
+        padding-right: calc(50% - 60px);
+        
+        .step {
+          flex: 0 0 120px;
+          .step-title {
+            font-size: 0.8rem;
+          }
+          
+          &.active {
+            transform: scale(1.05);
+            
+            .step-number {
+              transform: scale(1.1);
+            }
+          }
+          
+          .step-number {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+          }
+        }
+      }
+      
+      .step-details {
+        padding: 1.5rem;
+        min-height: 120px;
+        
+        .details-content {
+          h3 {
+            font-size: 1.2rem;
+          }
+          
+          p {
+            font-size: 0.95rem;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .ooda-diagram {
+      .steps-container {
+        .step {
+          flex: 0 0 110px;
+          
+          &.active {
+            transform: scale(1.05);
+            
+            .step-number {
+              transform: scale(1.1);
+            }
+          }
+          
+          .step-number {
+            width: 36px;
+            height: 36px;
+            font-size: 0.9rem;
+          }
+          
+          .step-title {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+} 

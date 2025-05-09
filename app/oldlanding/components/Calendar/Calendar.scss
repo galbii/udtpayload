@@ -1,0 +1,77 @@
+// Calendar.scss
+// This file contains additional styles for the calendar component
+// Most styling is handled by styled-components in the UDTCalendar component
+
+// Global modal styles 
+.modal-open {
+  overflow: hidden;
+  
+  &:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+  }
+}
+
+// Calendar custom overrides
+.udt-calendar {
+  --primary-color: #b71c1c;
+  --secondary-color: #880e0e;
+  --bg-dark: #1e1f21;
+  --bg-medium: #2c2d30;
+  --text-light: #e0e0e0;
+  --text-muted: #999;
+  --border-color: #444;
+  
+  &-slot {
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+    
+    &.selected {
+      box-shadow: 0 4px 8px rgba(183, 28, 28, 0.2);
+    }
+  }
+  
+  &-header {
+    position: relative;
+    overflow: hidden;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    }
+  }
+  
+  &-day {
+    user-select: none;
+    
+    &.today {
+      position: relative;
+      
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+      }
+    }
+  }
+} 

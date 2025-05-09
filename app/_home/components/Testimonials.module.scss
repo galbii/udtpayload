@@ -1,0 +1,297 @@
+.testimonialsSection {
+  padding: 5rem 0;
+  background: url('/images/tactical-pattern.svg'), linear-gradient(135deg, #1c1e22 0%, #2a2e33 100%);
+  background-size: 200px, 100%;
+  background-repeat: repeat, no-repeat;
+  color: #fff;
+  position: relative;
+  
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .sectionHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+    
+    p {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .slideCounter {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+  
+  .testimonialsContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    
+    .testimonialNav {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      
+      &.prev {
+        left: -1rem;
+      }
+      
+      &.next {
+        right: -1rem;
+      }
+    }
+  }
+  
+  .testimonialsWrapper {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .testimonialsTrack {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .testimonialItem {
+    min-width: 100%;
+    padding: 2rem;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    
+    .testimonialContent {
+      flex: 1;
+      margin-bottom: 1.5rem;
+      
+      .testimonialQuote {
+        font-size: 1.05rem;
+        font-style: italic;
+        line-height: 1.5;
+        color: #fff;
+        margin-bottom: 0.75rem;
+        -webkit-font-smoothing: antialiased;
+      }
+      
+      .truncated {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+      }
+
+      .quoteToggleBtn {
+        background: none;
+        border: none;
+        color: #b71c1c;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0.25rem 0;
+        margin-top: 0.25rem;
+        margin-bottom: 0.75rem;
+        font-size: 0.9rem;
+        display: inline-block;
+      }
+      
+      .testimonialRating {
+        .star, .starActive {
+          font-size: 1.5rem;
+          margin-right: 0.25rem;
+        }
+        
+        .star {
+          color: #888;
+        }
+        
+        .starActive {
+          color: #f8a145;
+        }
+      }
+    }
+    
+    .testimonialAuthor {
+      display: flex;
+      align-items: center;
+      
+      .authorImage {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 1rem;
+        border: 2px solid #fff;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      
+      .authorInfo {
+        .authorName {
+          font-weight: 600;
+          color: #fff;
+          margin-bottom: 0.25rem;
+        }
+        
+        .authorLocation {
+          font-size: 0.875rem;
+          color: rgba(255, 255, 255, 0.9);
+          margin-bottom: 0.25rem;
+        }
+        
+        .authorDate {
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.7);
+          margin-bottom: 0.25rem;
+        }
+        
+        .authorPhotos {
+          font-size: 0.75rem;
+          color: #b71c1c;
+        }
+      }
+    }
+  }
+  
+  .testimonialIndicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    
+    .indicator {
+      width: 12px;
+      height: 12px;
+      min-width: 12px;
+      min-height: 12px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.3);
+      margin: 0 0.5rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &.active {
+        background-color: #fff;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .testimonialsSection {
+    .testimonialNav {
+      font-size: 2.5rem;
+      width: 3rem;
+      height: 3rem;
+    }
+    
+    .testimonialItem {
+      padding: 2rem;
+      
+      .testimonialContent {
+        .testimonialQuote {
+          font-size: 1.1rem;
+
+          &.truncated {
+            -webkit-line-clamp: 5;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonialsSection {
+    .testimonialNav {
+      font-size: 2rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    
+    .testimonialItem {
+      padding: 1.5rem;
+      
+      .testimonialContent {
+        margin-bottom: 1rem;
+        
+        .testimonialQuote {
+          font-size: 1rem;
+
+          &.truncated {
+            -webkit-line-clamp: 4;
+          }
+        }
+
+        .quoteToggleBtn {
+          font-size: 0.85rem;
+        }
+        
+        .testimonialRating {
+          .star, .starActive {
+            font-size: 1.25rem;
+          }
+        }
+      }
+      
+      .testimonialAuthor {
+        .authorImage {
+          width: 50px;
+          height: 50px;
+          margin-right: 0.75rem;
+        }
+        .authorInfo {
+          .authorName {
+            font-size: 0.95rem; 
+          }
+          .authorLocation, .authorDate, .authorPhotos {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+} 

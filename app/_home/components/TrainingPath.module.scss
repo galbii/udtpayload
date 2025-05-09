@@ -1,0 +1,99 @@
+.trainingPathSection {
+  padding: 5rem 0;
+  background-color: transparent;
+  
+  .container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .trainingPathContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    
+    @media (max-width: 992px) {
+      flex-direction: column;
+      text-align: center;
+      gap: 2rem;
+    }
+  }
+  
+  .badgesImage {
+    flex: 1;
+    
+    .badgesImg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  
+  .trainingPathText {
+    flex: 1;
+    
+    h2 {
+      font-size: 2.5rem;
+      color: #1c1e22;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+    
+    p {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 0;
+    }
+  }
+
+  .experienceCta {
+    margin-top: 2rem;
+    
+    p {
+      font-weight: 600;
+      color: #1c1e22;
+      margin-bottom: 0.5rem;
+    }
+    
+    .scheduleLink {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #b71c1c;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      transition: background-color 0.3s ease;
+      
+      &:hover {
+        background-color: #941616;
+      }
+    }
+  }
+  
+  .scheduleShowcase {
+    max-width: 100%;
+    text-align: center;
+    
+    .scheduleImage {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    @media (max-width: 992px) {
+      margin-top: 2rem;
+    }
+  }
+} 
